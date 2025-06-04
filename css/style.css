@@ -52,12 +52,6 @@
   background-color: #0056b3;
 }
 
-/* Google 번역 위젯 영역 스타일 */
-#google_translate_element {
-  display: inline-block;
-  margin-left: 8px;
-}
-
 #sidebar {
   position: fixed;
   top: 50px;           

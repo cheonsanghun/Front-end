@@ -14,9 +14,13 @@ $(document).ready(function() {
   $('#topbar').append('<div id="google_translate_element" style="display:none; margin-left:8px;"></div>');
   $.getScript('//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
 
-  // 4) 번역 버튼(#translate-btn) 클릭 → 구글 번역 위젯 표시 토글
+  // 4) 번역 버튼(#translate-btn) 클릭 → 페이지를 일본어로 자동 번역
   $('#translate-btn').click(function() {
-    $('#google_translate_element').toggle();
+    var currentURL = encodeURIComponent(window.location.href);
+    var translateURL = 'https://translate.google.com/translate?hl=ko&sl=auto&tl=ko&u=' + currentURL;
+    window.open(translateURL, '_blank');
+    setTranslateCookie('ja');
+    location.reload();
   });
 
   // 5) 검색 버튼(#search-btn) 클릭 → 간단한 검색 입력창 표시
@@ -30,13 +34,3 @@ $(document).ready(function() {
   });
 });
 
-// Google 번역 초기화 함수
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement(
-    {
-      pageLanguage: 'ko',
-      includedLanguages: 'ko,en,jp'
-    },
-    'google_translate_element'
-  );
-}
