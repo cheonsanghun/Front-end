@@ -10,14 +10,32 @@ $(document).ready(function() {
     window.location.href = targetPage;
   });
 
-  // 3) 번역 버튼(#translate-btn) 클릭 → 구글 번역으로 현재 페이지 전체 번역
+  // 3) Google 번역 위젯 영역을 상단바에 동적으로 추가하고 스크립트 로드
+  $('#topbar').append('<div id="google_translate_element" style="display:none; margin-left:8px;"></div>');
+  $.getScript('https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+  // Google 번역 위젯 초기화 함수 정의
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ko',
+      includedLanguages: 'ko,ja',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  };
+
+  // 4) 번역 버튼(#translate-btn) 클릭 → 위젯 표시 및 일본어로 자동 번역
   $('#translate-btn').click(function() {
-    var currentURL = encodeURIComponent(window.location.href);
-    var translateURL = 'https://translate.google.com/translate?hl=ko&sl=auto&tl=ko&u=' + currentURL;
-    window.open(translateURL, '_blank');
+    $('#google_translate_element').show();
+
+    // select 태그가 로드될 때까지 대기 후 일본어로 변경
+    setTimeout(function() {
+      var $select = $('#google_translate_element select');
+      if ($select.length) {
+        $select.val('ja').trigger('change');
+      }
+    }, 500);
   });
 
-  // 4) 검색 버튼(#search-btn) 클릭 → 간단한 검색 입력창 표시
+  // 5) 검색 버튼(#search-btn) 클릭 → 간단한 검색 입력창 표시
   $('#search-btn').click(function() {
     var query = prompt('검색할 내용을 입력하세요:');
     if (query !== null && query.trim() !== '') {
@@ -27,3 +45,4 @@ $(document).ready(function() {
     }
   });
 });
+
