@@ -37,7 +37,7 @@ $(document).ready(function() {
 
   // 5) 검색 버튼(#search-btn) 클릭 → 간단한 검색 입력창 표시
   $('#search-btn').click(function() {
-    var query = prompt('검색할 내용을 입력하세요:');
+    var query = $('#search-input').val();
     if (query !== null && query.trim() !== '') {
       // 여기서는 단순히 alert로 검색어를 보여주지만,
       // 실제 구현 시 검색 API 호출이나 검색 결과 페이지로 이동시키면 됨.
