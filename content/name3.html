@@ -3,18 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>웹사이트</title>
+  <title>모바일오더 홈페이지</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style3.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../jq/script.js" defer></script>
+  <script src="../jq/script3.js"></script>
 </head>
 <body>
-      <!-- 상단 바 (톱바) -->
+  <!-- 상단 바 (톱바) -->
   <div id="topbar">
     <button id="menu-toggle" aria-label="메뉴 열기/닫기">&#x2630;</button>
     <div class="spacer"></div>
-    <button id="translate-btn">번역</button>
-    <button id="search-btn">검색</button>
+  </div>
+  <!-- 모바일 오더 페이지 -->
+
+  <div id="top3">  
+    L.O까지 남은시간 : 
+    <span class="countdown" id="remaining-time">
+    01:30:00
+    </span>
+    <span id="topmenu">
+    <button id="kaikei">계산</button>
+    <button id="yobidasi">점원호출</button>
+    </span>
+  </div>
+  <div class="container3">
+  <div class="menu-left" id="categoryList">
+    <button data-category="food" class="active">フード</button>
+    <button data-category="drink">ドリンク</button>
+  </div>
+
+  <div class="menu-right" id="productList">
+    <!-- 카테고리 클릭시 표시 -->
+  </div>
   </div>
 
   <!-- 사이드바  -->
@@ -27,5 +49,9 @@
       <li><button class="menu-item" data-target="../content/name4.html">이름4</button></li>
     </ul>
   </div>
+
+  
+  
+  
 </body>
 </html>
