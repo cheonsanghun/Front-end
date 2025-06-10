@@ -1,0 +1,56 @@
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .quiz-container {
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+    }
+
+    .question {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .options input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      background-color: #007BFF;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .right-align {
+     float: right;
+     margin-left: 10px; /* 버튼의 오른쪽 정렬 */
+    }
+
+    .hidden {
+      display: none;
+    }
