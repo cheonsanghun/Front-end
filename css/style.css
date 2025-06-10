@@ -104,24 +104,3 @@
 #sidebar.active ~ #content {
   padding-left: 220px; 
 }
-
-
-/* ──────────────────────────────────────────────
-   Google 번역 배너(상단 바) 완전히 숨기기
-────────────────────────────────────────────── */
-
-/* 1) 번역 후 상단에 뜨는 배너(iframe)를 숨김 
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
-
-/* 2) 배너 숨김으로 인해 밀렸던 body-top 여백을 제거 
-body {
-  top: 0 !important;
-}
-
-/* 3) 위젯 내부에 남아있는 지구본 아이콘 또는 텍스트 숨김 (선택 사항) 
-.goog-te-gadget-icon,
-.goog-te-gadget-simple {
-  display: none !important;
-}
