@@ -15,20 +15,23 @@
   <div id="topbar">
     <button id="menu-toggle" aria-label="메뉴 열기/닫기">&#x2630;</button>
     <div class="spacer"></div>
+    <button id="translate-btn">번역</button>
+    <button id="search-btn">검색</button>
   </div>
   <!-- 모바일 오더 페이지 -->
 
   <div id="top3">  
-    L.O까지 남은시간 : 
+    L.Oまで残り時間 : 
     <span class="countdown" id="remaining-time">
     01:30:00
     </span>
     <span id="topmenu">
-    <button id="kaikei">계산</button>
-    <button id="yobidasi">점원호출</button>
+    <button id="kaikei">お会計する</button>
+    <button id="yobidasi">呼び出し</button>
     </span>
   </div>
-  <div class="container3">
+  <div id="kaikeiscreen">
+  <div id="orderscreen">
   <div class="menu-left" id="categoryList">
     <button data-category="food" class="active">フード</button>
     <button data-category="drink">ドリンク</button>
@@ -36,6 +39,7 @@
 
   <div class="menu-right" id="productList">
     <!-- 카테고리 클릭시 표시 -->
+  </div>
   </div>
   </div>
 

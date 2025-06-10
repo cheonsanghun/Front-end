@@ -5,16 +5,17 @@
     height : 100px;
     text-align: center;
 }
-.container3 {
+#orderscreen {
     display: flex;
     height: calc(100vh - 100px);
 }
 .menu-left {
-    width: 30%;
+    width: 20%;
     background-color: #f1f1f1;
     padding: 1em;
     overflow-y: auto;
     border-right: 1px solid #ddd;
+    text-align: center;
 }
 .menu-left button {
     display: block;
@@ -25,10 +26,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
-    text-align: left;
 }
 .menu-left button.active {
-    background-color: #ff5722;
+    background-color: #0056b3;
     color: white;
 }
 .menu-right {
@@ -90,5 +90,31 @@
   background-color: #0056b3;
 }
 #topmenu {
+    text-align: right;
+}
+table, td, th {
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#kaikeichart {
+    display: flex; 
+    justify-content: center;
+}
+.num {
+    text-align: center;
+    width: 50px;
+}
+.name {
+    width: 300px;
+}
+.price {
+    text-align: center;
+    width: 75px;
+}
+.quantity {
+    text-align: center;
+    width: 50px;
+}
+.sum {
     text-align: right;
 }
