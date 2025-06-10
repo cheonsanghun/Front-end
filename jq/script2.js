@@ -152,7 +152,7 @@
 
   const quizSets = {
   jp: quizData1,
-  db: quizData2 // 나중에 DB 문제 추가
+  db: quizData2
 };
 
   let quizData;
