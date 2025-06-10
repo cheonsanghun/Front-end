@@ -57,7 +57,7 @@
 
     .right-align {
      float: right;
-     margin-left: 10px; /* 버튼의 오른쪽 정렬렬 */
+     margin-left: 10px; /* 버튼의 오른쪽 정렬 */
     }
 
     .hidden {
@@ -69,7 +69,7 @@
   
 </head>
 <body>
-      <!-- 상단 바 (톱바) -->
+  <!-- 상단 바 (톱바) -->
   <div id="topbar">
     <button id="menu-toggle" aria-label="메뉴 열기/닫기">&#x2630;</button>
     <div class="spacer"></div>
@@ -88,8 +88,15 @@
     </ul>
   </div>
 
-  <!-- 퀴즈 -->
-<div class="quiz-container">
+<!-- 퀴즈 선택 화면-->
+<div id="quiz-selection" class="quiz-container">
+  <h2>문제 유형을 선택하세요</h2>
+  <button class="btn" onclick="startQuiz('jp')">Java Programing 문제</button>
+  <button class="btn" onclick="startQuiz('db')">Database 문제</button>
+</div>
+
+<!-- 퀴즈 -->
+<div class="quiz-container hidden" id="quiz-area">
   <div class="question" id="question"></div>
   <div class="options" id="options"></div>
   <div class="user-answer" id="user-answer"></div>
@@ -98,11 +105,28 @@
   <div class="result" id="result"></div>
   <button class="btn hidden" id="next-btn" onclick="loadNextQuestion()">다음</button>
   <button class="btn hidden" id="restart-btn" onclick="restartQuiz()">다시 시작</button>
+  <button class="btn hidden" id="back-to-selection-btn" onclick="goToSelection()">처음으로 돌아가기</button>
 </div>
 
 <script>
+
+  function startQuiz(type) {
+  quizData = quizSets[type];
+  currentIndex = 0;
+  score = 0;
+  isAnswered = false;
+
+   // 선택 화면 숨기기, 퀴즈 화면 보이기
+  document.getElementById("quiz-selection").classList.add("hidden");
+  document.getElementById("quiz-area").classList.remove("hidden");
+
+  // 처음으로 돌아가기 버튼 숨기기
+  document.getElementById("back-to-selection-btn").classList.add("hidden");
+
+  loadQuestion();
+}
  
-  const quizData = [
+  const quizData1 = [
     {
       question: "다음 중 결과가 boolean형으로 나오는 연산자가 아닌 것은?",
       options: [
@@ -141,7 +165,7 @@
         "static",
         "public"
       ],
-      correct: 1
+      correct: 0
     },
     {
       question: "자바의 기본자료형 중에서 가장 큰 정수형 자료형은?",
@@ -163,10 +187,87 @@
       type : "text",
       correctAnswer : "boolean"
     }
-
-
   ];
 
+  const quizData2 = [
+    {
+      question: "다음 중 MySQL에서 문자열 자료형이 아닌 것은?",
+      options: [
+        "VARCHAR",
+        "TEXT",
+        "INT",
+        "CHAR"
+      ],
+      correct: 2
+    },
+    {
+      question: "다음 중 WHERE 절에서 사용 가능한 비교 연산자가 아닌 것은?",
+      options: [
+        "=",
+        "!=",
+        "BETWEEN",
+        "ORDER"
+      ],
+      correct: 3
+    },
+    {
+      question: "다음 중 두 값을 같은지를 비교하는 비교 연산자는?",
+      options: [
+        ":=",
+        "==",
+        "=",
+        "==="
+      ],
+      correct: 2
+    },
+    {
+      question: "다음 중 SQL에서 테이블을 생성할 때 사용하는 키워드는?",
+      options: [
+        "MAKE TABLE",
+        "NEW TABLE",
+        "CREATE TABLE",
+        "SET TABLE"
+      ],
+      correct: 2
+    },
+    {
+      question: "SELECT 문에서 중복된 결과를 제거할 때 사용하는 키워드는?",
+      options: [
+        "UNIQUE",
+        "DISTINCT",
+        "DELETE",
+        "LIMIT"
+      ],
+      correct: 1
+    },
+    {
+      question: "다음 중 날짜와 관련된 MySQL 함수가 아닌 것은?",
+      options: [
+        "Now()",
+        "CURDATE()",
+        "ADDDATE()",
+        "SUBSTRING()"
+      ],
+      correct: 3
+    },
+    {
+      question: "현재 날짜와 시간을 반환하는 MySQL 함수는?",
+      type : "text",
+      correctAnswer : "now()"
+    },
+    {
+      question: "문자열 길이를 구하는 함수는?",
+      type : "text",
+      correctAnswer : "Length()"
+    }
+  ];
+
+  const quizSets = {
+  jp: quizData1,
+  db: quizData2 // 나중에 DB 문제 추가
+};
+
+  let quizData;
   let currentIndex = 0;
   let score = 0;
   let isAnswered = false; // 정답이 이미 표시되었는지 여부
@@ -245,6 +346,7 @@
     }
 
     const answer = parseInt(selected.value);
+    const current = quizData[currentIndex];
     const correct = quizData[currentIndex].correct;
     const labels = document.querySelectorAll(".options label");
 
@@ -271,7 +373,6 @@
      }
   }
 
-
   //다음 문제로 넘어가기
   function loadNextQuestion() {
     currentIndex++;
@@ -282,7 +383,7 @@
     }
   }
 
-  //문제를 다 풀었을 때 나오는 화면면
+  //문제를 다 풀었을 때 나오는 화면
   function showFinalResult() {
     questionEl.textContent = "모든 문제를 풀었습니다.";
     optionsEl.innerHTML = "";
@@ -290,6 +391,8 @@
     resultEl.style.color = "black";
     nextBtn.classList.add("hidden");
     restartBtn.classList.remove("hidden");
+
+    document.getElementById("back-to-selection-btn").classList.remove("hidden");
   }
 
   //전체 퀴즈를 다시 시작
@@ -297,10 +400,11 @@
     currentIndex = 0;
     score = 0;
     restartBtn.classList.add("hidden");
+    document.getElementById("back-to-selection-btn").classList.add("hidden");
     loadQuestion();
   }
 
-  //현재 문제의 정답 확인인
+  //현재 문제의 정답 확인
   function showAnswer() {
   if (isAnswered) return;
 
@@ -329,8 +433,15 @@
   showAnswerBtn.classList.add("hidden");
   }
 
-  // 첫 문제 로드
-  loadQuestion();
+  function goToSelection() {
+  document.getElementById("quiz-area").classList.add("hidden");
+  document.getElementById("quiz-selection").classList.remove("hidden");
+
+  // 초기화
+  currentIndex = 0;
+  score = 0;
+  isAnswered = false;
+}
 </script>
 
 
