@@ -114,7 +114,7 @@ $(document).ready(function () {
     fetchData(1);
 
     // 5) 검색 버튼 클릭 시 1페이지부터 다시 조회
-    $('#search-btn').click(function () {
+    $('#search-btn1').click(function () {
         fetchData(1);
     });
 });
