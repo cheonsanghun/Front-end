@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>웹사이트</title>
   <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/style1.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="../jq/script.js" defer></script>
+  <script src="../jq/script1.js" defer></script>
 </head>
 <body>
       <!-- 상단 바 (톱바) -->
@@ -26,6 +28,22 @@
       <li><button class="menu-item" data-target="../content/name3.html">모바일오더</button></li>
       <li><button class="menu-item" data-target="../content/name4.html">asdads</button></li>
     </ul>
+  </div>
+
+  <div id="content">
+    <!-- 검색 입력창 & 국가 선택 -->
+    <input type="text" id="company-search" placeholder="회사명 입력">
+    <select id="country-select">
+      <option value="">국가 선택</option>
+      <option value="일본">일본</option>
+      <option value="미국">미국</option>
+      <option value="영국">영국</option>
+      <option value="독일">독일</option>
+      <!-- 필요에 따라 추가 -->
+    </select>
+    <button id="search-btn">검색</button>
+    <ul id="results"></ul>
+    <div id="pagination"></div>
   </div>
 </body>
 </html>
