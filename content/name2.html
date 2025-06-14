@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,45 +11,44 @@
   <script src="../jq/script.js" defer></script>
   <script src="../jq/script2.js" defer></script>
 </head>
+
 <body>
   <!-- 상단 바 (톱바) -->
   <div id="topbar">
     <button id="menu-toggle" aria-label="메뉴 열기/닫기">&#x2630;</button>
     <div class="spacer"></div>
-    <button id="translate-btn">번역</button>
-    <button id="search-btn">검색</button>
+    <button id="google_translate_element"></button>
   </div>
 
   <!-- 사이드바  -->
   <div id="sidebar">
     <ul>
       <li><button class="menu-item" data-target="../main/web.html">홈</button></li>
-      <li><button class="menu-item" data-target="../content/name1.html">웹번역</button></li>
+      <li><button class="menu-item" data-target="../content/name1.html">월드잡 api</button></li>
       <li><button class="menu-item" data-target="../content/name2.html">퀴즈</button></li>
       <li><button class="menu-item" data-target="../content/name3.html">모바일오더</button></li>
-      <li><button class="menu-item" data-target="../content/name4.html">이름4</button></li>
     </ul>
   </div>
 
-<!-- 퀴즈 선택 화면-->
-<div id="quiz-selection" class="quiz-container">
-  <h2>문제 유형을 선택하세요</h2>
-  <button class="btn" onclick="startQuiz('jp')">Java Programing 문제</button>
-  <button class="btn" onclick="startQuiz('db')">Database 문제</button>
-</div>
+  <!-- 퀴즈 선택 화면-->
+  <div id="quiz-selection" class="quiz-container">
+    <h2>문제 유형을 선택하세요</h2>
+    <button class="btn" onclick="startQuiz('jp')">Java Programing 문제</button>
+    <button class="btn" onclick="startQuiz('db')">Database 문제</button>
+  </div>
 
-<!-- 퀴즈 -->
-<div class="quiz-container hidden" id="quiz-area">
-  <div class="question" id="question"></div>
-  <div class="options" id="options"></div>
-  <div class="user-answer" id="user-answer"></div>
-  <button class="btn" id="submit-btn" onclick="submitAnswer()">제출</button>
-  <button class="btn right-align" id="show-answer-btn" onclick="showAnswer()">정답 보기</button>
-  <div class="result" id="result"></div>
-  <button class="btn hidden" id="next-btn" onclick="loadNextQuestion()">다음</button>
-  <button class="btn hidden" id="restart-btn" onclick="restartQuiz()">다시 시작</button>
-  <button class="btn hidden" id="back-to-selection-btn" onclick="goToSelection()">처음으로 돌아가기</button>
-</div>
+  <!-- 퀴즈 -->
+  <div class="quiz-container hidden" id="quiz-area">
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="user-answer" id="user-answer"></div>
+    <button class="btn" id="submit-btn" onclick="submitAnswer()">제출</button>
+    <button class="btn right-align" id="show-answer-btn" onclick="showAnswer()">정답 보기</button>
+    <div class="result" id="result"></div>
+    <button class="btn hidden" id="next-btn" onclick="loadNextQuestion()">다음</button>
+    <button class="btn hidden" id="restart-btn" onclick="restartQuiz()">다시 시작</button>
+    <button class="btn hidden" id="back-to-selection-btn" onclick="goToSelection()">처음으로 돌아가기</button>
+  </div>
 
 
 </body>

@@ -21,17 +21,4 @@ $(document).ready(function() {
     }, 'google_translate_element');
   };
 
-  // 4) 번역 버튼(#translate-btn) 클릭 → 위젯 표시 및 일본어로 자동 번역
-  /*$('#translate-btn').click(function() {
-    $('#google_translate_element').show();
-
-    // select 태그가 로드될 때까지 대기 후 일본어로 변경
-    setTimeout(function() {
-      var $select = $('#google_translate_element select');
-      if ($select.length) {
-        $select.val('ja').trigger('change');
-      }
-    }, 500);
-  });
-*/
 });
