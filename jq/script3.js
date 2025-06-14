@@ -50,7 +50,7 @@ $(document).ready(function () {
     });
     
     // L.O 까지 남은 좌석시간 표시
-    let remainingTime = 3;
+    let remainingTime = 5400;
       
     function updateCountdown() {
         let hours = Math.floor(remainingTime / 3600);
